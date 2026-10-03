@@ -173,7 +173,7 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
   }
 
 
-.scoolcode-section {
+.code-section {
   text-align: center;
   max-width: 1100px;
   margin: 0 auto;
@@ -184,13 +184,13 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
 .main-title {
   font-size: 28px;
   font-weight: bold;
-  color: #0b3b60;
+  color: var(--muted);
   margin-bottom: 12px;
 }
 
 .main-description {
   font-size: 16px;
-  color: #333333;
+  color: var(--muted);
   max-width: 800px;
   margin: 0 auto 40px auto;
   line-height: 1.6;
@@ -211,6 +211,12 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.6;
+  text-align: left;
+
 }
 
 .image-wrapper {
@@ -228,13 +234,13 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
 .card-item h3 {
   font-size: 22px;
   font-weight: bold;
-  color: #0b3b60;
+  color: var(--muted);
   margin: 10px 0 12px 0;
 }
 
 .card-item p {
   font-size: 14px;
-  color: #555555;
+  color: var(--muted);
   line-height: 1.6;
   text-align: left; /* သို့မဟုတ် center ထားချင်ပါက text-align: center သို့ ပြောင်းနိုင်ပါသည် */
 }
@@ -293,7 +299,7 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
     <div class="section-head">
       <div class="container journey-grid">
         <div><div class="kicker">Digital discovery</div><h2>ကစားရင်း သင်ယူမယ်၊ သင်ယူရင်း ဖန်တီးမယ်!</h2></div>
-        <p class="section-copy">မိမိတို့ရဲ့ သားသားမီးမီးများကို ဖုန်းနဲ့ Game ပဲ ဆော့မနေစေဘဲ Game တွေကို ကိုယ်တိုင်ဖန်တီးနိုင်တဲ့ Developer အငယ်စားလေးများ ဖြစ်လာဖို့ ပြင်ဆင်ပေးလိုက်ပါ။ 💻✨</p>
+        <p class="section-copy">မိမိတို့ရဲ့ သားသားမီးမီးများကို ဖုန်းနဲ့ Game ပဲ ဆော့မနေစေဘဲ Game တွေကို ကိုယ်တိုင်ဖန်တီးနိုင်တဲ့ Developer အငယ်စားလေးများ ဖြစ်လာဖို့ ပြင်ဆင်ပေးလိုက်ပါ။</p>
       </div>
     </div>
     <div class="course-grid">
@@ -306,12 +312,12 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
           <p>မခက်ပါဘူး! Scratch ဆိုတာ စာတွေ အများကြီး ရိုက်နေစရာမလိုဘဲ Blocks လေးတွေကို ပဟေဠိ (Puzzle) ဆက်သလို ဆက်ပြီး ခိုင်းစေရတဲ့ Visual Programming ဖြစ်တာကြောင့် Coding ကို အခုမှ စတင်ထိတွေ့မယ့် သားသားမီးမီးတို့အတွက် အသင့်တော်ဆုံးပါပဲ။ 🌟</p>
           <h4>ဒီသင်တန်းမှာ ဘာတွေ သင်ယူရမှာလဲ?</h4>
           <ul class="course-list">
-            <li>🔹 Scratch ရဲ့ အခြေခံ Tool များအသုံးပြုပုံ</li>
-            <li>🔹 Move, Looks & Control Blocks များ</li>
-            <li>🔹 Game တွေမှာ အရေးပါတဲ့ Variables, Looping & Operators များ</li>
-            <li>🔹 Graphics Effect များအသုံးပြုပြီး လှပအောင် ဖန်တီးပုံ</li>
-            <li>🔹 Game Title Screen နဲ့ Score System (ရမှတ်ရေတွက်နည်း) ပြုလုပ်ပုံ</li>
-            <li>🔹 Sprite (ဇာတ်ကောင်) များကို အလိုအလျောက် လှုပ်ရှားစေပုံ</li>
+            <li>Scratch ရဲ့ အခြေခံ Tool များအသုံးပြုပုံ</li>
+            <li>Move, Looks & Control Blocks များ</li>
+            <li>Game တွေမှာ အရေးပါတဲ့ Variables, Looping & Operators များ</li>
+            <li>Graphics Effect များအသုံးပြုပြီး လှပအောင် ဖန်တီးပုံ</li>
+            <li>Game Title Screen နဲ့ Score System (ရမှတ်ရေတွက်နည်း) ပြုလုပ်ပုံ</li>
+            <li>Sprite (ဇာတ်ကောင်) များကို အလိုအလျောက် လှုပ်ရှားစေပုံ</li>
           </ul>
           <h4>ဘာကြောင့် ဒီသင်တန်းကို ရွေးချယ်သင့်တာလဲ?</h4>
           <p>အလွတ်ကျက် သင်ကြားမှု မဟုတ်ဘဲ Animation တွေ၊ Game Project တွေကို Hands-on (ကိုယ်တိုင်) ဖန်တီးရင်း သင်ကြားရမှာဖြစ်လို့ ပျင်းစရာ လုံးဝမကောင်းဘဲ ကလေးတို့ရဲ့ Logic Thought (ယုတ္တိဗေဒနည်းကျ တွေးခေါ်မှု) နဲ့ Problem Solving Skills (ပြဿနာဖြေရှင်းနိုင်စွမ်း) ကို မြှင့်တင်ပေးနိုင်ပါတယ်။</p>
@@ -357,7 +363,7 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
 </section>
 
 <section id="journey" class="section">
-<div class="scoolcode-section">
+<div class="code-section">
   <!-- Title & Description Header -->
   <h2>Step-by-step Learning Journey</h2>
   <h3 class="main-title">(အဆင့်ဆင့် တိုးတက်မှု အသားပေး အိုင်ဒီယာ)</h3>
@@ -366,7 +372,7 @@ footer{background:var(--navy);color:#c6d0dd;padding:32px 0}
   </p>
 
   <!-- 3 Column Cards Layout -->
-  <div class="card-grid">
+  <div class="card-grid course-content">
     
     <!-- Card 1: Blox coding -->
     <div class="card-item">
