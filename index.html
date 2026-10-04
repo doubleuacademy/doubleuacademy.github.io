@@ -1024,6 +1024,24 @@
     box-shadow: 0 0 0 3px rgba(10,30,109,.10);
   }
 
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .footer-brand img {
+    width: auto;
+    height: 84px;
+    object-fit: contain;
+    display: block;
+  }
+
   #formMessage { color: var(--success) !important; }
 
   /* =========================================================
@@ -1378,7 +1396,7 @@
     <!-- Card 1: Blox coding -->
     <div class="card-item">
       <div class="image-wrapper">
-        <img src="./assets/teaching_journey/step1.png" alt="Blox coding" style="border-radius: 50px;">
+        <img src="./assets/teaching_journey/step1.png" alt="Blox coding" style="border-radius: 4px;">
       </div>
       <h3>Blox coding</h3>
       <p>
@@ -1452,7 +1470,14 @@
 
 <footer>
   <div class="container footer-inner">
-    <div><div class="footer-brand">DoubleU Academy</div><div>Digital literacy • Programming • Creative technology</div></div>
+    <div>
+      <div class="footer-brand">
+        <img src="./assets/logo/DoubleU.png" alt="DoubleU Academy Logo">
+        <span>DoubleU Academy</span>
+      </div>
+      <div>Digital literacy • Programming • Creative technology</div>
+    </div>
+
     <div>Website based on the DoubleU academy data.</div>
   </div>
 </footer>
