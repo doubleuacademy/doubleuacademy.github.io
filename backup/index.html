@@ -1,0 +1,1515 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DoubleU Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+
+<style>
+  /* =========================================================
+     DOUBLEU ACADEMY — BRAND UI SYSTEM
+     Primary: Deep Navy #0A1E6D
+     Accent: Champagne Gold #CBB687
+     Style: Professional Academy / University
+     ========================================================= */
+
+  @font-face {
+    font-family: 'WaloneThin';
+    src: url('Z06-Walone_Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+
+  :root {
+    --brand-navy:       #0A1E6D;
+    --brand-navy-dark:  #07164F;
+    --brand-navy-light: #142B82;
+
+    --brand-gold:       #CBB687;
+    --brand-gold-dark:  #B49D6B;
+    --brand-gold-light: #DCCDAA;
+    --brand-gold-soft:  #F4EFE3;
+
+    /* Backward-compatible aliases used by the existing page */
+    --brand-yellow:      #CBB687;
+    --brand-yellow-dark: #B49D6B;
+    --brand-yellow-soft: #F4EFE3;
+    --brand-blue:        #0A1E6D;
+    --brand-blue-dark:   #07164F;
+    --brand-blue-soft:   #EEF0F8;
+
+    --bg:          #FCFBF8;
+    --bg-soft:     #F7F7F5;
+    --surface:     #FFFFFF;
+    --surface-2:   #F4F4F1;
+
+    --text:        #17213D;
+    --text-muted:  #687087;
+    --text-light:  #AEB2C0;
+
+    --border:      #E3E0D7;
+    --success:     #25804C;
+
+    --shadow-sm: 0 6px 20px rgba(7,22,79,.06);
+    --shadow-md: 0 14px 35px rgba(7,22,79,.10);
+    --shadow-lg: 0 24px 60px rgba(7,22,79,.14);
+
+    --radius-sm: 10px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 30px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Poppins', 'WaloneThin', 'Padauk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #app {
+    min-height: 100vh;
+    background: var(--bg);
+    overflow: hidden;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button { cursor: pointer; }
+
+  img { max-width: 100%; }
+
+  .container {
+    width: min(1160px, calc(100% - 40px));
+    margin: 0 auto;
+  }
+
+  /* =========================================================
+     TYPOGRAPHY
+     ========================================================= */
+
+  h1, h2, h3, h4, h5, h6,
+  .font-heading {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .myanmar-text,
+  [lang="my"],
+  p {
+    font-family: 'WaloneThin', 'Padauk', sans-serif;
+  }
+
+  h1, h2, h3, h4 {
+    color: var(--brand-navy);
+  }
+
+  /* =========================================================
+     NAVIGATION
+     ========================================================= */
+
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(10,30,109,.97);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .nav-inner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 22px;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    color: #fff;
+    font-weight: 900;
+    letter-spacing: -.035em;
+    font-size: 19px;
+    white-space: nowrap;
+  }
+
+  .brand img {
+    width: auto !important;
+    height: 70px !important;
+    object-fit: contain;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    color: #D9DCEA;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .nav-links a {
+    position: relative;
+    padding: 8px 0;
+    transition: color .2s ease;
+  }
+
+  .nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--brand-gold);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform .2s ease;
+  }
+
+  .nav-links a:hover { color: #fff; }
+
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    border: 1px solid rgba(203,182,135,.35);
+    background: var(--brand-gold);
+    color: var(--brand-navy-dark);
+    padding: 11px 17px;
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 13px;
+    box-shadow: 0 6px 18px rgba(203,182,135,.18);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--brand-gold-light);
+    transform: translateY(-2px);
+    box-shadow: 0 9px 24px rgba(203,182,135,.28);
+  }
+
+  /* =========================================================
+     HERO
+     ========================================================= */
+
+  .hero {
+    position: relative;
+    padding: 80px 0 76px;
+    background:
+      radial-gradient(circle at 84% 15%, rgba(203,182,135,.24), transparent 28%),
+      radial-gradient(circle at 8% 90%, rgba(10,30,109,.08), transparent 25%),
+      linear-gradient(135deg, #FFFFFF 0%, #FCFBF8 55%, #F1F3F8 100%);
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    right: -90px;
+    top: 100px;
+    border: 20px solid rgba(203,182,135,.12);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.02fr .98fr;
+    gap: 54px;
+    align-items: center;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-gold-soft);
+    color: #6A5A36;
+    border: 1px solid var(--brand-gold-light);
+    padding: 8px 12px;
+    border-radius: 999px;
+    font-weight: 900;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+  }
+
+  .eyebrow-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--brand-gold-dark);
+    box-shadow: 0 0 0 4px rgba(180,157,107,.14);
+  }
+
+  h1 {
+    font-size: clamp(44px, 6vw, 74px);
+    line-height: .94;
+    letter-spacing: -.065em;
+    margin: 20px 0;
+    color: var(--brand-navy);
+  }
+
+  h1 span { color: var(--brand-navy); }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.75;
+    color: #59647A;
+    max-width: 620px;
+  }
+
+  .lead strong { color: var(--brand-navy); }
+
+  .actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 13px 19px;
+    border-radius: 13px;
+    font-weight: 900;
+    border: 1px solid transparent;
+    transition:
+      transform .2s ease,
+      box-shadow .2s ease,
+      background .2s ease,
+      border-color .2s ease;
+  }
+
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--brand-gold);
+    color: var(--brand-navy-dark);
+    box-shadow: 0 9px 22px rgba(180,157,107,.22);
+  }
+
+  .btn-primary:hover {
+    background: var(--brand-gold-light);
+    box-shadow: 0 12px 28px rgba(180,157,107,.30);
+  }
+
+  .btn-dark {
+    background: var(--brand-navy);
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(7,22,79,.16);
+  }
+
+  .btn-dark:hover { background: var(--brand-navy-light); }
+
+  .btn-ghost {
+    background: rgba(255,255,255,.84);
+    border-color: #DDD9CF;
+    color: var(--brand-navy);
+  }
+
+  .btn-ghost:hover {
+    background: #fff;
+    border-color: rgba(10,30,109,.30);
+  }
+
+  .hero-note {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+    color: #647087;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .hero-note strong { color: var(--brand-navy); }
+
+  .hero-note span { color: var(--brand-gold-dark); }
+
+  .hero-img-wrap { position: relative; }
+
+  .hero-img {
+    width: 100%;
+    height: 560px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    border: 7px solid #fff;
+    display: block;
+  }
+
+  .sticker {
+    position: absolute;
+    right: -18px;
+    bottom: 28px;
+    background: var(--brand-gold);
+    color: var(--brand-navy-dark);
+    padding: 16px 18px;
+    border-radius: 18px;
+    box-shadow: 0 15px 30px rgba(7,22,79,.18);
+    font-weight: 900;
+    max-width: 175px;
+    line-height: 1.3;
+  }
+
+  .sticker small {
+    display: block;
+    font-size: 10px;
+    opacity: .72;
+    margin-bottom: 4px;
+  }
+
+  /* =========================================================
+     STATS
+     ========================================================= */
+
+  .stats {
+    margin-top: -32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--brand-navy);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 22px;
+    padding: 22px;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .stat {
+    padding: 10px 18px;
+    border-right: 1px solid rgba(255,255,255,.11);
+  }
+
+  .stat:last-child { border-right: 0; }
+
+  .stat b {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    color: var(--brand-gold);
+    display: block;
+    letter-spacing: -.04em;
+  }
+
+  .stat span {
+    color: #C7CBD8;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  /* =========================================================
+     SECTIONS
+     ========================================================= */
+
+  .section { padding: 94px 0; }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 34px;
+  }
+
+  .kicker {
+    color: var(--brand-navy);
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .15em;
+    font-weight: 900;
+  }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.06;
+    letter-spacing: -.05em;
+    margin: 9px 0 0;
+    color: var(--brand-navy);
+  }
+
+  .section-copy {
+    max-width: 530px;
+    color: var(--text-muted);
+    line-height: 1.75;
+  }
+
+  /* =========================================================
+     COURSE CARDS
+     ========================================================= */
+
+  .course-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease,
+      border-color .25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(10,30,109,.24);
+  }
+
+  .course-card {
+    display: grid;
+    grid-template-columns: 42% 58%;
+    min-height: 300px;
+  }
+
+  .course-image {
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    object-fit: cover;
+  }
+
+  .course-content { padding: 28px; }
+
+  .age {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: var(--brand-gold-soft);
+    border: 1px solid rgba(180,157,107,.28);
+    color: #6A5A36;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .04em;
+  }
+
+  .course-content h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    letter-spacing: -.035em;
+    margin: 15px 0 10px;
+    color: var(--brand-navy);
+    line-height: 1.2;
+  }
+
+  .course-content h4 {
+    color: var(--brand-navy-dark);
+    font-size: 15px;
+    margin: 18px 0 7px;
+  }
+
+  .course-content p {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: 14px;
+  }
+
+  .course-list {
+    padding: 0;
+    margin: 18px 0 0;
+    list-style: none;
+    display: grid;
+    gap: 9px;
+  }
+
+  .course-list li {
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    gap: 8px;
+    color: var(--text);
+  }
+
+  .course-list li::before {
+    content: "✓";
+    color: var(--brand-gold-dark);
+    font-weight: 1000;
+    flex-shrink: 0;
+  }
+
+  /* =========================================================
+     SKILLS
+     ========================================================= */
+
+  .skill-section {
+    background:
+      radial-gradient(circle at 10% 10%, rgba(10,30,109,.22), transparent 28%),
+      radial-gradient(circle at 90% 85%, rgba(203,182,135,.13), transparent 26%),
+      var(--brand-navy);
+    color: #fff;
+  }
+
+  .skill-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .skill-section h2 { color: #fff; }
+
+  .skill-section .kicker { color: var(--brand-gold); }
+
+  .skill-section .section-copy { color: #BFC5D8; }
+
+  .skill-section h3 {
+    color: #fff;
+    font-size: 18px;
+    margin: 27px 0 14px;
+  }
+
+  .skill-image {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 26px;
+    border: 5px solid rgba(255,255,255,.10);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 13px;
+    margin-top: 15px;
+  }
+
+  .skill {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 15px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.045);
+    border-radius: 15px;
+    transition: background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+
+  .skill:hover {
+    background: rgba(255,255,255,.075);
+    border-color: rgba(203,182,135,.38);
+    transform: translateY(-2px);
+  }
+
+  .skill-icon {
+    flex-shrink: 0;
+    color: var(--brand-gold);
+    margin-top: 2px;
+  }
+
+  .skill b {
+    display: block;
+    color: var(--brand-gold);
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .skill span {
+    display: block;
+    font-size: 12px;
+    color: #BFC5D8;
+    line-height: 1.55;
+  }
+
+  /* =========================================================
+     LEARNING JOURNEY
+     ========================================================= */
+
+  .code-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .main-title {
+    font-size: 27px;
+    font-weight: 800;
+    color: var(--brand-navy-dark);
+    margin-bottom: 12px;
+  }
+
+  .main-description {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.75;
+  }
+
+  .card-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .card-item {
+    flex: 1;
+    min-width: 260px;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+    text-align: left;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  }
+
+  .card-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(10,30,109,.22);
+  }
+
+  .image-wrapper {
+    width: 100%;
+    margin-bottom: 15px;
+    overflow: hidden;
+    border-radius: 18px;
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    height: 205px;
+    display: block;
+    object-fit: cover;
+    transition: transform .35s ease;
+  }
+
+  .card-item:hover .image-wrapper img { transform: scale(1.035); }
+
+  .card-item h3 {
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--brand-navy);
+    margin: 7px 0 8px;
+  }
+
+  .card-item p {
+    width: 100%;
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    text-align: left;
+    margin: 0;
+  }
+
+  /* =========================================================
+     GLOBAL SECTION
+     ========================================================= */
+
+  .global {
+    background:
+      radial-gradient(circle at 85% 20%, rgba(203,182,135,.20), transparent 28%),
+      linear-gradient(135deg, #F7F3E9 0%, #F1F3F8 100%);
+  }
+
+  .global-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 44px;
+    align-items: center;
+  }
+
+  .global-art { position: relative; }
+
+  .global-image {
+    width: 100%;
+    height: 430px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: var(--shadow-lg);
+    border: 5px solid #fff;
+  }
+
+  .global-badge {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    background: #fff;
+    padding: 17px 20px;
+    border-radius: 17px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
+  }
+
+  .global-badge b {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    color: var(--brand-navy);
+  }
+
+  .global-badge span {
+    font-size: 11px;
+    color: #6B7283;
+    font-weight: 700;
+  }
+
+  .quote {
+    border-left: 5px solid var(--brand-gold-dark);
+    padding: 18px 20px;
+    background: rgba(255,255,255,.72);
+    border-radius: 0 15px 15px 0;
+    color: #59647A;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-top: 22px;
+  }
+
+  /* =========================================================
+     FAQ
+     ========================================================= */
+
+  .faq {
+    max-width: 850px;
+    margin: 0 auto;
+  }
+
+  #faq .section-head { margin-bottom: 35px; }
+
+  #faq .section-head > p {
+    max-width: 520px;
+    color: var(--text-muted);
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 900;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    color: var(--brand-navy);
+  }
+
+  summary::-webkit-details-marker { display: none; }
+
+  summary span {
+    color: var(--brand-gold-dark);
+    font-size: 22px;
+  }
+
+  details {
+    border-bottom: 1px solid var(--border);
+    padding: 19px 0;
+  }
+
+  details:first-child { border-top: 1px solid var(--border); }
+
+  details p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 720px;
+    margin-bottom: 3px;
+  }
+
+  /* =========================================================
+     CTA
+     ========================================================= */
+
+  .cta {
+    padding: 78px 0;
+    background: var(--bg);
+  }
+
+  .cta-box {
+    background:
+      radial-gradient(circle at 88% 10%, rgba(255,255,255,.26), transparent 24%),
+      var(--brand-gold);
+    border-radius: 28px;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--shadow-md);
+  }
+
+  .cta-box::after {
+    content: "";
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.17);
+    right: -80px;
+    top: -120px;
+    pointer-events: none;
+  }
+
+  .cta h2 {
+    color: var(--brand-navy);
+    max-width: 650px;
+  }
+
+  .cta p {
+    color: #5E5135;
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  .cta .kicker { color: #6A5B38; }
+
+  .cta .btn {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+
+  footer {
+    background: var(--brand-navy-dark);
+    color: #C9CEDD;
+    padding: 34px 0;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .footer-brand {
+    color: #fff;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 3px;
+  }
+
+  /* =========================================================
+     MODAL / FORM
+     ========================================================= */
+
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(3,10,35,.76);
+    display: none;
+    place-items: center;
+    z-index: 50;
+    padding: 20px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+
+  .modal.open { display: grid; }
+
+  .modal-box {
+    width: min(620px,100%);
+    background: var(--surface);
+    border-radius: 24px;
+    padding: 30px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.3);
+    position: relative;
+    border: 1px solid var(--border);
+  }
+
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 20px;
+  }
+
+  .close:hover {
+    background: var(--brand-gold-soft);
+    border-color: rgba(180,157,107,.35);
+  }
+
+  .modal-box h3 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    margin: 0 0 10px;
+    color: var(--brand-navy);
+  }
+
+  .modal-box p {
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .form {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .form input,
+  .form select {
+    width: 100%;
+    padding: 13px 14px;
+    border-radius: 11px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+
+  .form input:focus,
+  .form select:focus {
+    border-color: var(--brand-navy);
+    box-shadow: 0 0 0 3px rgba(10,30,109,.10);
+  }
+
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    margin-bottom: 6px;
+  }
+
+  .footer-brand img {
+    width: auto;
+    height: 84px;
+    object-fit: contain;
+    display: block;
+  }
+
+  #formMessage { color: var(--success) !important; }
+
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+
+    .hero-grid,
+    .skill-grid,
+    .global-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero { padding-top: 55px; }
+
+    .hero-img { height: 460px; }
+
+    .sticker { right: 14px; }
+
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+
+    .stat:nth-child(2) { border-right: 0; }
+
+    .stat:nth-child(-n+2) {
+      border-bottom: 1px solid rgba(255,255,255,.12);
+      padding-bottom: 18px;
+    }
+
+    .stat:nth-child(n+3) { padding-top: 18px; }
+
+    .course-grid { grid-template-columns: 1fr; }
+
+    .course-card { grid-template-columns: 38% 62%; }
+
+    .skill-image,
+    .global-image { height: 390px; }
+
+    .cta-box {
+      display: block;
+      padding: 38px;
+    }
+
+    .cta-box .btn { margin-top: 12px; }
+  }
+
+  @media (max-width: 650px) {
+    .container {
+      width: min(100% - 24px, 1160px);
+    }
+
+    .nav-inner { min-height: 66px; }
+
+    .brand { font-size: 16px; }
+
+    .brand img { height: 48px !important; }
+
+    .nav-cta {
+      padding: 9px 12px;
+      font-size: 12px;
+    }
+
+    .hero { padding: 48px 0 60px; }
+
+    h1 { font-size: 48px; }
+
+    .lead { font-size: 16px; }
+
+    .hero-img {
+      height: 380px;
+      border-radius: 22px;
+    }
+
+    .sticker {
+      right: 10px;
+      bottom: 15px;
+      padding: 13px 15px;
+      font-size: 13px;
+    }
+
+    .section { padding: 68px 0; }
+
+    .section-head { display: block; }
+
+    .stats { margin-top: -20px; }
+
+    .stats-grid { padding: 10px; }
+
+    .stat { padding: 14px 10px; }
+
+    .stat b { font-size: 22px; }
+
+    .stat span { font-size: 10px; }
+
+    .course-card { grid-template-columns: 1fr; }
+
+    .course-image {
+      height: 260px;
+      min-height: 0;
+    }
+
+    .course-content { padding: 23px; }
+
+    .skills { grid-template-columns: 1fr; }
+
+    .skill-image,
+    .global-image { height: 330px; }
+
+    .global-badge {
+      left: 12px;
+      bottom: 12px;
+    }
+
+    .code-section { padding: 25px 0; }
+
+    .card-item {
+      width: 100%;
+      max-width: none;
+    }
+
+    .cta-box {
+      border-radius: 20px;
+      padding: 30px 24px;
+    }
+
+    .footer-inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
+
+
+
+</head>
+<body>
+<div id="app">
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="#top" class="brand">
+
+      <img class="" src="./assets/logo/DoubleU.png"/>
+      <span>DoubleU Academy</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#courses">Courses</a><a href="#skills">Skills</a><a href="#journey">Learning Path</a><a href="#global">Global</a>
+    </nav>
+    <button class="nav-cta" data-open="enroll">Book a Trial</button>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><i class="eyebrow-dot"></i> Digital literacy for ages 6–18</span>
+      <h1>Future skills.<br><span>Made fun.</span></h1>
+      <p class="lead">coding နဲ့ digital creation ကို စိတ်ဝင်စားတဲ့ <strong>အသက် ၆ နှစ် မှ ၁၈ နှစ်</strong> ကလေးများအတွက် ကျွန်တော်တို့ရဲ့ ပျော်စရာကောင်းတဲ့ သင်တန်းတွေက စောင့်ကြိုနေပါပြီ</p>
+      <div class="actions">
+    <button class="btn btn-primary" data-open="enroll">Explore a Trial Class →</button>
+    <a class="btn btn-ghost" href="#courses">View Courses</a>
+      </div>
+      <div class="hero-note"><strong>Learn.</strong> Create. Collaborate. <span>•</span> <strong>Grow.</strong></div>
+    </div>
+    <div class="hero-img-wrap">
+      <img class="hero-img" src="./assets/coding_kids/kid01.png" />
+      <div class="sticker"><small>PROGRAMMING + DIGITAL LITERACY</small>For ages 6–18</div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <!-- <div class="stat"><b>37+</b><span>Countries reached</span></div> -->
+      <!-- <div class="stat"><b>180+</b><span>Locations</span></div> -->
+      <div class="stat"><b>50+</b><span>Students</span></div>
+      <div class="stat"><b>6–18</b><span>Age range</span></div>
+      <div class="stat"><b>5+</b><span>Online classes</span></div>
+      <div class="stat"><b>3+</b><span>Free classes</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="courses" class="section">
+  <div class="container">
+    <div class="section-head">
+      <div class="container journey-grid">
+        <div><div class="kicker">Digital discovery</div><h2>ကစားရင်း သင်ယူမယ်၊ သင်ယူရင်း ဖန်တီးမယ်!</h2></div>
+        <p class="section-copy">မိမိတို့ရဲ့ သားသားမီးမီးများကို ဖုန်းနဲ့ Game ပဲ ဆော့မနေစေဘဲ Game တွေကို ကိုယ်တိုင်ဖန်တီးနိုင်တဲ့ Developer အငယ်စားလေးများ ဖြစ်လာဖို့ ပြင်ဆင်ပေးလိုက်ပါ။</p>
+      </div>
+    </div>
+    <div class="course-grid">
+      <article class="card course-card">
+        <img class="course-image" src="./assets/courses/img-01.jpeg" />
+        <div class="course-content">
+          <span class="age">AGES 6–10</span>
+          <h3>Scratch Programming (Level-1)</h3>
+          <h4>Coding ဆိုတာ ခက်ခဲပါသလား?</h4>
+          <p>မခက်ပါဘူး! Scratch ဆိုတာ စာတွေ အများကြီး ရိုက်နေစရာမလိုဘဲ Blocks လေးတွေကို ပဟေဠိ (Puzzle) ဆက်သလို ဆက်ပြီး ခိုင်းစေရတဲ့ Visual Programming ဖြစ်တာကြောင့် Coding ကို အခုမှ စတင်ထိတွေ့မယ့် သားသားမီးမီးတို့အတွက် အသင့်တော်ဆုံးပါပဲ။ 🌟</p>
+          <h4>ဒီသင်တန်းမှာ ဘာတွေ သင်ယူရမှာလဲ?</h4>
+          <ul class="course-list">
+            <li>Scratch ရဲ့ အခြေခံ Tool များအသုံးပြုပုံ</li>
+            <li>Move, Looks & Control Blocks များ</li>
+            <li>Game တွေမှာ အရေးပါတဲ့ Variables, Looping & Operators များ</li>
+            <li>Graphics Effect များအသုံးပြုပြီး လှပအောင် ဖန်တီးပုံ</li>
+            <li>Game Title Screen နဲ့ Score System (ရမှတ်ရေတွက်နည်း) ပြုလုပ်ပုံ</li>
+            <li>Sprite (ဇာတ်ကောင်) များကို အလိုအလျောက် လှုပ်ရှားစေပုံ</li>
+          </ul>
+          <h4>ဘာကြောင့် ဒီသင်တန်းကို ရွေးချယ်သင့်တာလဲ?</h4>
+          <p>အလွတ်ကျက် သင်ကြားမှု မဟုတ်ဘဲ Animation တွေ၊ Game Project တွေကို Hands-on (ကိုယ်တိုင်) ဖန်တီးရင်း သင်ကြားရမှာဖြစ်လို့ ပျင်းစရာ လုံးဝမကောင်းဘဲ ကလေးတို့ရဲ့ Logic Thought (ယုတ္တိဗေဒနည်းကျ တွေးခေါ်မှု) နဲ့ Problem Solving Skills (ပြဿနာဖြေရှင်းနိုင်စွမ်း) ကို မြှင့်တင်ပေးနိုင်ပါတယ်။</p>
+        </div>
+      </article>
+      <article class="card course-card">
+        <img class="course-image" src="./assets/courses/img-02.jpeg"/>
+        <div class="course-content">
+          <span class="age">AGES 10–18</span>
+          <h3>ကလေးများအတွက် Python Programming သင်တန်း</h3>
+          <p>အသက် (၆) နှစ်မှ (၁၈) နှစ်အထိ ကလေးများနှင့် လူငယ်များအတွက် အထူးသီးသန့် ရေးဆွဲထားသော ကလေးငယ်များ၏ စဉ်းစားတွေးခေါ်နိုင်စွမ်း၊ ပြဿနာဖြေရှင်းနိုင်စွမ်းနှင့် တီထွင်ဖန်တီးနိုင်စွမ်းများကို မြှင့်တင်ပေးနိုင်မည့် သင်တန်းဖြစ်ပါသည်။</p>
+          <h4>သင်တန်းတွင် ဘာတွေသင်ယူရမလဲ။</h4>
+          <ul class="course-list">
+            <li>Coding ၏ အခြေခံသဘောတရားများကို ပျော်ရွှင်စွာ လေ့လာခြင်း</li>
+            <li>Python တကယ့် Programming Text စာကြောင်းများ စတင်ရေးသားခြင်း</li>
+            <li>Variable, Loop, Condition စသည့် အရေးကြီးသော Logic များ သင်ယူခြင်း</li>
+            <li>ဉာဏ်စမ်းဂိမ်းများ (Quiz Games) နှင့် စာသားအခြေပြု Mini-Games များ ရေးဆွဲခြင်း</li>
+            <li>Python Structure များ၊ Functions နှင့် Data Structures များ အသေးစိတ် လေ့လာခြင်း</li>
+            <li>Website ရေးသားခြင်း နှင့် Artificial Intelligence (AI) အခြေခံသဘောတရားများအား မိတ်ဆက်ပေးခြင်း</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="section skill-section">
+  <div class="container skill-grid">
+
+    <div>
+      <div class="kicker">21st century</div>
+      <h2>Technology is the tool. Skills are the superpower.</h2>
+      
+      <h3>Academic skills</h3>
+      <div class="skills">
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+          <div>
+            <b>Algorithmic thinking</b>
+            <span>လက်တွေ့ဘဝပြဿနာတွေအတွက် ဖန်တီးမှုရှိပြီး ထိရောက်တဲ့ ဖြေရှင်းနည်းတွေကို ရှာဖွေခြင်း။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+          </svg>
+          <div>
+            <b>ပြဿနာဖြေရှင်းခြင်း</b>
+            <span>ကလေးတွေဟာ အမှားတွေကို ကျရှုံးမှုဆိုတာထက် အခွင့်အရေးတစ်ခုအဖြစ်သာ မြင်တတ်သွားပါတယ်။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="20" x2="18" y2="10"></line>
+            <line x1="12" y1="20" x2="12" y2="4"></line>
+            <line x1="6" y1="20" x2="6" y2="14"></line>
+          </svg>
+          <div>
+            <b>Analytic နဲ့ logical thinking</b>
+            <span>Coding က ကလေးတွေကို တကယ့်ဥပမာတွေရော graphic visual ဥပမာတွေကနေတစ်ဆင့် အယူအဆကောက်နုတ်ချက်တွေကို နားလည်သွားအောင် ကူညီပေးပါတယ်။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 2v7.31M14 9.3V2M8.5 2h7M14 9.3a6.5 6.5 0 1 1-4 0"></path>
+          </svg>
+          <div>
+            <b>STEM ကိုပိုပြီး နားလည်သဘောပေါက်လာခြင်း</b>
+            <span>ကလေးတွေရဲ့စွမ်းဆောင်ရည်တွေက အလျင်အမြန်တိုးလာတာကြောင့် အဆင့်တွေပိုပြီးကောင်းလာပါတယ်။</span>
+          </div>
+        </div>
+      </div>
+
+      <h3>Soft skills</h3>
+      <div class="skills">
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18h6M10 22h4M15 13a5 5 0 1 0-6 0c0 2 2 3 2 5h4c0-2 2-3 2-5z"></path>
+          </svg>
+          <div>
+            <b>ဖန်တီးနိုင်စွမ်း</b>
+            <span>ကလေးတွေရဲ့ ဖန်တီးနိုင်စွမ်းကို အကြီးအကျယ်တိုးတက်စေမယ့် အကောင်းဆုံးဖြစ်နိုင်ခြေ နည်းလမ်းတစ်ခု ဒါမှမဟုတ် တီထွင်မှုတစ်ခုကို ရှာဖွေပါ။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <circle cx="12" cy="12" r="6"></circle>
+            <circle cx="12" cy="12" r="2"></circle>
+          </svg>
+          <div>
+            <b>အာရုံစူးစိုက်မှုနဲ့ တိကျမှု</b>
+            <span>coding သင်နေစဥ်မှာ ကလေးတွေဟာ မှန်ကန်တဲ့အစီအစဥ်နဲ့ တိကျတဲ့ commands ပေးပုံကို သင်ရမှာဖြစ်ပြီး ဒါဟာ သူတို့ရဲ့ အာရုံစူးစိုက်မှုကို တိုးသွားစေပါတယ်။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+          <div>
+            <b>အာရုံစူးစိုက်ခြင်းနဲ့ ဇွဲရှိခြင်း</b>
+            <span>ပိုပြီးရှုပ်ထွေးတဲ့ ဂိမ်းတွေဟာ code တွေပိုပြီးလိုအပ်ပါတယ်၊ ဒါကြောင့် အချိန်ပိုကုန်ပြီး ပိုပြီးအာရုံစူးစိုက်ရပါတယ်။</span>
+          </div>
+        </div>
+
+        <div class="skill">
+          <svg class="skill-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          </svg>
+          <div>
+            <b>ကိုယ့်ဘာသာယုံကြည်မှု</b>
+            <span>ရှုပ်ထွေးတဲ့ code တစ်ခုကို ဖန်တီးရတာက ကလေးတွေ တကယ်ကိုဂုဏ်ယူရမယ့် မဟာအစွမ်းတစ်ရပ်ဖြစ်ပါတယ်။</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <img class="skill-image" src="./assets/skills/child-skill.jpeg" />
+  </div>
+</section>
+
+<section id="journey" class="section">
+<div class="code-section">
+  <!-- Title & Description Header -->
+  <h2>Step-by-step Learning Journey</h2>
+  <h3 class="main-title">(အဆင့်ဆင့် တိုးတက်မှု အသားပေး အိုင်ဒီယာ)</h3>
+  <p class="main-description">
+    Visual coding ကနေ text based programming ကို အလွယ်တကူပြောင်းလို့ရအောင် ကျွန်တော်တို့ရဲ့ ထူးခြားတဲ့ပညာရေးပလက်ဖောင်းကို တီထွင်ထားပါတယ်။
+  </p>
+
+  <!-- 3 Column Cards Layout -->
+  <div class="card-grid course-content">
+    
+    <!-- Card 1: Blox coding -->
+    <div class="card-item">
+      <div class="image-wrapper">
+        <img src="./assets/teaching_journey/step1.png" alt="Blox coding" style="border-radius: 4px;">
+      </div>
+      <h3>Blox coding</h3>
+      <p>
+        Building blocks တွေနဲ့ coding ပညာရေးကို စတင်ပါတယ်။ ကျွန်တော်တို့ရဲ့ ထူးခြားတဲ့ visual coding နည်းက ဘယ်အသက်အရွယ်မဆို အမြဲသင့်တော်ပါတယ်။
+      </p>
+    </div>
+
+    <!-- Card 2: Mix coding -->
+    <div class="card-item">
+      <div class="image-wrapper">
+        <img src="./assets/teaching_journey/step2.png" alt="Mix coding" style="border-radius: 4px;">
+      </div>
+      <h3>Mix coding</h3>
+      <p>
+        ဒုတိယအဆင့်အနေနဲ့ ကျောင်းသားတွေက MIX mode နဲ့ codes တွေစရေးရမှာဖြစ်ပါတယ်၊ အဲဒီမှာ သူတို့အနေနဲ့ building blox နဲ့ text-based languages ကို အပြိုင်တွေ့ရမှာဖြစ်ပါတယ်။
+      </p>
+    </div>
+
+    <!-- Card 3: Text coding -->
+    <div class="card-item">
+      <div class="image-wrapper">
+        <img src="./assets/teaching_journey/step3.png" alt="Text coding" style="border-radius: 4px;">
+      </div>
+      <h3>Text coding</h3>
+      <p>
+        visual blocks ကို သူတို့သေချာတတ်ကျွမ်းသွားတာ သေချာပြီဆိုတာနဲ့ ကျွန်တော်တို့က နောက်ထပ် text-based programming ဘာသာရပ်တွေဖြစ်တဲ့ Python၊ Unity၊ Godot၊ C# တို့ကို ဆက်ပြီးသင်ပေးပါတယ်။
+      </p>
+    </div>
+
+  </div>
+</div>
+</section>
+
+<section id="global" class="section global">
+  <div class="container global-grid">
+    <div class="global-art">
+      <img class="global-image" src="./assets/courses/img-02.jpeg"/>
+      <div class="global-badge"><b>50+</b><span>students </span></div>
+    </div>
+    <div>
+      <div class="kicker">A global learning community</div>
+      <h2>Built for a digital world.</h2>
+      <p class="section-copy">The flyer presents DoubleU as an international digital-literacy learning brand, with programs designed to make technology approachable, creative and useful.</p>
+      <div class="quote">“Create. Code. Enjoy.” — a simple brand direction reflected throughout the original flyer design.</div>
+      <div class="actions"><button class="btn btn-dark" data-open="enroll">Find a course →</button></div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="faq">
+  <div class="container"><div class="section-head reveal"><div><div class="kicker">05 · Questions</div><h2>Good to know.</h2></div><p>A few simple answers for parents and learners before choosing a course.</p></div>
+    <div class="faq reveal">
+      <details open><summary>What age groups are covered? <span>＋</span></summary><p>The flyer groups learning into Digital Discovery for ages 6–10 and Programming Courses for ages 10–18. Individual course placement can depend on the learner's experience.</p></details>
+      <details><summary>Does the program only teach coding? <span>＋</span></summary><p>No. The flyer also highlights digital content creation, robotics, web design, drawing, video editing, AI, data science, VR/AR and other digital skills.</p></details>
+      <details><summary>Can beginners start? <span>＋</span></summary><p>The visual-coding pathway is designed to make programming concepts approachable before learners move into text-based languages and more advanced projects.</p></details>
+      <details><summary>What should I do next? <span>＋</span></summary><p>Use the course cards above to explore a direction, then contact the school for current schedules, fees, placement and enrollment information.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div><div class="kicker">Ready to start?</div><h2>Let curiosity become a real digital skill.</h2><p>Choose an age group and request a trial class. This prototype uses the course information shown in your flyer.</p></div>
+      <button class="btn btn-dark" data-open="enroll">Request a Trial</button>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="./assets/logo/DoubleU.png" alt="DoubleU Academy Logo">
+        <span>DoubleU Academy</span>
+      </div>
+      <div>Digital literacy • Programming • Creative technology</div>
+    </div>
+
+    <div>Website based on the DoubleU academy data.</div>
+  </div>
+</footer>
+
+<div class="modal" id="enrollModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-box">
+    <button class="close" aria-label="Close" id="closeModal">×</button>
+    <h3 id="modalTitle">Request a trial class</h3>
+    <p>Tell us who you’re looking to enroll and we’ll use this form as the starting point for the real booking flow.</p>
+    <form class="form" id="trialForm">
+      <input required placeholder="Parent / guardian name">
+      <input required type="email" placeholder="Email address">
+      <select required><option value="">Choose age group</option><option>Ages 6–10</option><option>Ages 10–18</option></select>
+      <button class="btn btn-primary" type="submit">Send Request</button>
+    </form>
+    <p id="formMessage" style="display:none;font-weight:800;color:#1a7b48;margin-bottom:0">Thanks! Your trial request has been captured in this prototype.</p>
+  </div>
+</div>
+
+<script>
+const modal=document.getElementById('enrollModal');
+const closeModal=()=>modal.classList.remove('open');
+document.querySelectorAll('[data-open="enroll"]').forEach(b=>b.addEventListener('click',()=>modal.classList.add('open')));
+document.getElementById('closeModal').addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.getElementById('trialForm').addEventListener('submit',e=>{
+  e.preventDefault();
+  e.currentTarget.style.display='none';
+  document.getElementById('formMessage').style.display='block';
+});
+</script>
+</div>
+</body>
+</html>

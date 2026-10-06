@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scratch Tutorial | DoubleU Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  /* =========================================================
+     DOUBLEU ACADEMY — BRAND UI SYSTEM
+     Primary: Deep Navy #0A1E6D
+     Accent: Champagne Gold #CBB687
+     Style: Professional Academy / University
+     ========================================================= */
+
+  @font-face {
+    font-family: 'WaloneThin';
+    src: url('Z06-Walone_Thin.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --brand-navy:       #0A1E6D;
+    --brand-navy-dark:  #07164F;
+    --brand-navy-light: #142B82;
+    --brand-gold:       #CBB687;
+    --brand-gold-dark:  #B49D6B;
+    --brand-gold-light: #DCCDAA;
+    --brand-gold-soft:  #F4EFE3;
+    --bg:               #FCFBF8;
+    --surface:          #FFFFFF;
+    --surface-2:        #F4F4F1;
+    --text:             #17213D;
+    --text-muted:       #687087;
+    --border:           #E3E0D7;
+    --success:          #25804C;
+    --shadow-sm:        0 6px 20px rgba(7,22,79,.06);
+    --shadow-md:        0 14px 35px rgba(7,22,79,.10);
+    --shadow-lg:        0 24px 60px rgba(7,22,79,.14);
+    --radius-sm:        10px;
+    --radius-md:        16px;
+    --radius-lg:        24px;
+    --radius-xl:        30px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+  
+  body {
+    margin: 0;
+    font-family: 'Poppins', 'WaloneThin', 'Padauk', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #app { min-height: 100vh; background: var(--bg); overflow: hidden; }
+  a { text-decoration: none; color: inherit; }
+  button, input, select { font: inherit; }
+  button { cursor: pointer; }
+  img { max-width: 100%; }
+
+  .container { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
+
+  /* TYPOGRAPHY */
+  h1, h2, h3, h4, h5, h6, .font-heading { font-family: 'Poppins', sans-serif; color: var(--brand-navy); }
+  .myanmar-text, [lang="my"], p { font-family: 'WaloneThin', 'Padauk', sans-serif; }
+
+  /* NAVIGATION */
+  .nav {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(10,30,109,.97);
+    border-bottom: 1px solid rgba(255,255,255,.09);
+    backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  }
+  .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+  .brand { display: flex; align-items: center; gap: 11px; color: #fff; font-weight: 900; letter-spacing: -.035em; font-size: 19px; white-space: nowrap; }
+  .brand img { width: auto !important; height: 70px !important; object-fit: contain; }
+  .nav-links { display: flex; align-items: center; gap: 25px; color: #D9DCEA; font-size: 13px; font-weight: 700; }
+  .nav-links a { position: relative; padding: 8px 0; transition: color .2s ease; }
+  .nav-links a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 1px; height: 2px;
+    border-radius: 999px; background: var(--brand-gold);
+    transform: scaleX(0); transform-origin: center; transition: transform .2s ease;
+  }
+  .nav-links a:hover { color: #fff; }
+  .nav-links a:hover::after { transform: scaleX(1); }
+  
+  .nav-cta {
+    border: 1px solid rgba(203,182,135,.35); background: var(--brand-gold);
+    color: var(--brand-navy-dark); padding: 11px 17px; border-radius: 12px;
+    font-weight: 900; font-size: 13px; box-shadow: 0 6px 18px rgba(203,182,135,.18);
+    transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .nav-cta:hover { background: var(--brand-gold-light); transform: translateY(-2px); box-shadow: 0 9px 24px rgba(203,182,135,.28); }
+
+  /* HERO */
+  .hero {
+    position: relative; padding: 80px 0 76px;
+    background: radial-gradient(circle at 84% 15%, rgba(203,182,135,.24), transparent 28%),
+                radial-gradient(circle at 8% 90%, rgba(10,30,109,.08), transparent 25%),
+                linear-gradient(135deg, #FFFFFF 0%, #FCFBF8 55%, #F1F3F8 100%);
+  }
+  .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 54px; align-items: center; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px; background: var(--brand-gold-soft);
+    color: #6A5A36; border: 1px solid var(--brand-gold-light); padding: 8px 12px;
+    border-radius: 999px; font-weight: 900; font-size: 11px; text-transform: uppercase; letter-spacing: .07em;
+  }
+  .eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--brand-gold-dark); box-shadow: 0 0 0 4px rgba(180,157,107,.14); }
+  h1 { font-size: clamp(44px, 6vw, 64px); line-height: 1.05; letter-spacing: -.065em; margin: 20px 0; color: var(--brand-navy); }
+  
+  .lead { font-size: 18px; line-height: 1.75; color: #59647A; max-width: 620px; }
+  .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 13px 19px; border-radius: 13px; font-weight: 900; border: 1px solid transparent;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary { background: var(--brand-gold); color: var(--brand-navy-dark); box-shadow: 0 9px 22px rgba(180,157,107,.22); }
+  .btn-primary:hover { background: var(--brand-gold-light); box-shadow: 0 12px 28px rgba(180,157,107,.30); }
+  
+  .hero-img-wrap { position: relative; }
+  .hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 7px solid #fff; display: block; }
+
+  /* SECTIONS & TUTORIAL CONTENT */
+  .section { padding: 94px 0; }
+  .kicker { color: var(--brand-navy); font-family: 'Poppins', sans-serif; font-size: 11px; text-transform: uppercase; letter-spacing: .15em; font-weight: 900; }
+  h2 { font-family: 'Poppins', sans-serif; font-size: clamp(32px, 4vw, 48px); line-height: 1.06; letter-spacing: -.05em; margin: 9px 0 0; color: var(--brand-navy); }
+
+  .tutorial-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 50px;
+  }
+  
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    box-shadow: var(--shadow-sm);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .step-card:nth-child(even) {
+    grid-template-columns: 1fr 1fr;
+    direction: rtl; /* simple way to flip layout for even cards */
+  }
+  
+  .step-card:nth-child(even) > * {
+    direction: ltr; /* reset text direction */
+  }
+
+  .step-content h3 { font-size: 28px; margin-bottom: 15px; display: flex; align-items: center; gap: 12px; }
+  .step-number { 
+    display: flex; align-items: center; justify-content: center; 
+    width: 36px; height: 36px; background: var(--brand-gold); 
+    color: var(--brand-navy-dark); border-radius: 50%; font-size: 18px; font-weight: 900; 
+  }
+  .step-content p { color: var(--text-muted); font-size: 16px; margin-bottom: 20px; }
+  
+  .block-list { list-style: none; padding: 0; margin: 0; }
+  .block-list li {
+    display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+    background: var(--surface-2); padding: 12px 18px; border-radius: 12px;
+    font-weight: 700; font-size: 14px;
+  }
+  .block-color { width: 16px; height: 16px; border-radius: 4px; display: inline-block; }
+  .color-yellow { background: #FFD500; }
+  .color-blue { background: #4C97FF; }
+  .color-purple { background: #9966FF; }
+  .color-orange { background: #FFAB19; }
+
+  .step-image {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 3px solid var(--surface-2);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* CTA */
+  .cta { padding: 78px 0; background: var(--bg); }
+  .cta-box {
+    background: radial-gradient(circle at 88% 10%, rgba(255,255,255,.26), transparent 24%), var(--brand-navy);
+    border-radius: 28px; padding: 50px; display: flex; justify-content: space-between; align-items: center; gap: 30px; position: relative; box-shadow: var(--shadow-md);
+  }
+  .cta-box h2 { color: #fff; }
+  .cta-box p { color: #C9CEDD; max-width: 620px; }
+  .cta-box .kicker { color: var(--brand-gold); }
+
+  /* FOOTER */
+  footer { background: var(--brand-navy-dark); color: #C9CEDD; padding: 34px 0; border-top: 1px solid rgba(255,255,255,.06); }
+  .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: center; font-size: 12px; }
+  .footer-brand { color: #fff; font-weight: 900; font-size: 16px; display: flex; align-items: center; gap: 12px; }
+  .footer-brand img { height: 40px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .step-card, .step-card:nth-child(even) { grid-template-columns: 1fr; direction: ltr; }
+    .cta-box { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+
+<body>
+<div id="app">
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a href="index.html" class="brand">
+      <img src="./assets/logo/DoubleU.png" alt="DoubleU Academy Logo"/>
+      <span>DoubleU Academy</span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html#courses">Courses</a>
+      <a href="#tutorial">Tutorial</a>
+      <a href="index.html#journey">Learning Path</a>
+    </nav>
+    <button class="nav-cta">Book a Trial</button>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><i class="eyebrow-dot"></i> Scratch Level-1 Tutorial</span>
+      <h1>Sprite လေးကို<br><span>အသက်သွင်းကြမယ်!</span></h1>
+      <p class="lead">Scratch ရဲ့ <strong>Move, Looks နဲ့ Control Blocks</strong> တွေကို အသုံးပြုပြီး ပထမဆုံး Animation လေးကို အတူတူ ဖန်တီးကြည့်ရအောင်။ 🌟</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#tutorial">Start Tutorial ↓</a>
+      </div>
+    </div>
+    <div class="hero-img-wrap">
+      <!-- Placeholder for a lively Scratch animation GIF or image -->
+      <img class="hero-img" src="./assets/courses/scratch-hero.jpeg" alt="Scratch Interface Preview" style="background: #E8F0FE;"/>
+    </div>
+  </div>
+</section>
+
+<!-- TUTORIAL CONTENT -->
+<section id="tutorial" class="section">
+  <div class="container">
+    <div class="section-head" style="text-align: center; display: block;">
+      <div class="kicker">Step-by-step Guide</div>
+      <h2>How to Animate a Sprite</h2>
+      <p class="section-copy" style="margin: 15px auto; max-width: 600px;">
+        Coding အတွေ့အကြုံ လုံးဝမရှိသေးတဲ့ သားသားမီးမီးတို့အတွက် Blocks လေးတွေကို Puzzle ဆက်သလို ဆက်ပြီး ဇာတ်ကောင် (Sprite) လေးတွေကို အလိုအလျောက် လှုပ်ရှားစေမယ့် နည်းလမ်းဖြစ်ပါတယ်။
+      </p>
+    </div>
+
+    <div class="tutorial-steps">
+      
+      <!-- Step 1 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">1</span> ပွဲစဖို့ ပြင်ဆင်မယ် (Events)</h3>
+          <p>Animation တစ်ခုစတင်ဖို့အတွက် အစပြုမယ့် ခလုတ်တစ်ခု လိုအပ်ပါတယ်။ Scratch မှာ အစိမ်းရောင်အလံ (Green Flag) လေးကိုနှိပ်တာနဲ့ စတင်အလုပ်လုပ်ဖို့ Event Block ကို အရင်ဆွဲထည့်ပါမယ်။</p>
+          <ul class="block-list">
+            <li><i class="block-color color-yellow"></i> When [Green Flag] clicked</li>
+          </ul>
+        </div>
+        <div>
+           <!-- Placeholder for Step 1 image -->
+           <img src="./ch1/images/img001.png" alt="Event Block" class="step-image" style="background:#f0f0f0; min-height: 200px;"/>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">2</span> လှုပ်ရှားမှု ထည့်မယ် (Motion)</h3>
+          <p>Sprite လေးကို ရှေ့ကိုရွေ့စေချင်ရင် Motion category ထဲက "Move" block ကို သုံးပါမယ်။ လှမ်းမယ့် ခြေလှမ်းအရေအတွက် (Steps) ကို ကိုယ်တိုင် ပြင်လို့ရပါတယ်။</p>
+          <ul class="block-list">
+            <li><i class="block-color color-blue"></i> move (10) steps</li>
+          </ul>
+        </div>
+        <div>
+           <img src="./assets/tutorial/step2.jpg" alt="Motion Block" class="step-image" style="background:#e0e8f0; min-height: 200px;"/>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">3</span> ရုပ်ထွက်ပြောင်းမယ် (Looks)</h3>
+          <p>ခြေလှမ်းလှမ်းသလို သဘာဝကျကျဖြစ်ဖို့ Sprite ရဲ့ ပုံစံ (Costume) ကို ပြောင်းပေးရပါမယ်။ ဒါမှသာ လမ်းလျှောက်နေတဲ့ Animation အစစ်နဲ့ တူလာမှာပါ။</p>
+          <ul class="block-list">
+            <li><i class="block-color color-purple"></i> next costume</li>
+          </ul>
+        </div>
+        <div>
+           <img src="./assets/tutorial/step3.jpg" alt="Looks Block" class="step-image" style="background:#e8e0f0; min-height: 200px;"/>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">4</span> ထပ်ခါထပ်ခါ လုပ်ခိုင်းမယ် (Loops)</h3>
+          <p>လုပ်ဆောင်ချက်တွေကို တစ်ခါတည်းနဲ့ မရပ်ဘဲ ဆက်တိုက်အလုပ်လုပ်စေချင်ရင် Control category ထဲက "Forever" လိုမျိုး Looping block တွေ အသုံးပြုပေးရပါတယ်။ </p>
+          <ul class="block-list">
+            <li><i class="block-color color-orange"></i> forever</li>
+            <li><i class="block-color color-orange"></i> wait (0.1) seconds</li>
+          </ul>
+        </div>
+        <div>
+           <img src="./assets/tutorial/step4.jpg" alt="Control Block" class="step-image" style="background:#f0e8e0; min-height: 200px;"/>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta">
+  <div class="container">
+    <div class="cta-box">
+      <div>
+        <div class="kicker">Ready for more?</div>
+        <h2>ဒီထက်ပိုမိုက်တဲ့ Game တွေ ဖန်တီးချင်လား?</h2>
+        <p>Game တွေမှာ အရေးပါတဲ့ Variables, Operators, Score System တွေနဲ့ ကိုယ်ပိုင် Game အပြည့်အစုံ ရေးဆွဲဖို့ <strong>Scratch Programming (Level-1)</strong> သင်တန်းမှာ ပါဝင်လိုက်ပါ။</p>
+      </div>
+      <button class="btn btn-primary" style="padding: 16px 24px; font-size: 16px;">
+        Book a Free Trial
+      </button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container footer-inner">
+    <div>
+      <div class="footer-brand">
+        <img src="./assets/logo/DoubleU.png" alt="Logo"/>
+        DoubleU Academy
+      </div>
+      <p style="margin-top: 5px; opacity: 0.7;">Empowering the next generation of digital creators.</p>
+    </div>
+    <div style="text-align: right; opacity: 0.7;">
+      &copy; 2026 DoubleU Academy. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
