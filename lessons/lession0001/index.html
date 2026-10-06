@@ -188,6 +188,68 @@
     box-shadow: var(--shadow-sm);
   }
 
+  /* IMAGE CLICK & HOVER EFFECTS */
+  .step-image, .hero-img {
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .step-image:hover, .hero-img:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-md);
+  }
+
+  /* FULL-SCREEN IMAGE MODAL STYLES */
+  .img-modal {
+    display: none; 
+    position: fixed; 
+    z-index: 9999; 
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(7, 22, 79, 0.9); /* Dark Navy Background */
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .img-modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 85vh;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    object-fit: contain;
+    animation-name: zoomIn;
+    animation-duration: 0.3s;
+  }
+
+  @keyframes zoomIn {
+    from {transform:scale(0.8); opacity: 0;}
+    to {transform:scale(1); opacity: 1;}
+  }
+
+  .img-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: var(--brand-gold);
+    font-size: 45px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+
+  .img-modal-close:hover,
+  .img-modal-close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   /* CTA */
   .cta { padding: 78px 0; background: var(--bg); }
   .cta-box {
@@ -246,7 +308,7 @@
     </div>
     <div class="hero-img-wrap">
       <!-- Placeholder for a lively Scratch animation GIF or image -->
-      <img class="hero-img" src="./assets/courses/scratch-hero.jpeg" alt="Scratch Interface Preview" style="background: #E8F0FE;"/>
+      <img class="hero-img preview-img" src="./assets/courses/scratch-hero.jpeg" alt="Scratch Interface Preview" style="background: #E8F0FE;"/>
     </div>
   </div>
 </section>
@@ -275,7 +337,7 @@
         </div>
         <div>
            <!-- Placeholder for Step 1 image -->
-           <img src="./images/img001.png" alt="Event Block" class="step-image" style="background:#f0f0f0; min-height: 200px;"/>
+           <img src="./images/img001.png" alt="Event Block" class="step-image preview-img" style="background:#f0f0f0; min-height: 200px;"/>
         </div>
       </div>
 
@@ -289,7 +351,7 @@
           </ul>
         </div>
         <div>
-           <img src="./assets/tutorial/step2.jpg" alt="Motion Block" class="step-image" style="background:#e0e8f0; min-height: 200px;"/>
+           <img src="./images/img002.png" alt="Motion Block" class="step-image preview-img" style="background:#e0e8f0; min-height: 200px;"/>
         </div>
       </div>
 
@@ -303,7 +365,7 @@
           </ul>
         </div>
         <div>
-           <img src="./assets/tutorial/step3.jpg" alt="Looks Block" class="step-image" style="background:#e8e0f0; min-height: 200px;"/>
+           <img src="./images/img003.png" alt="Looks Block" class="step-image preview-img" style="background:#e8e0f0; min-height: 200px;"/>
         </div>
       </div>
 
@@ -318,7 +380,22 @@
           </ul>
         </div>
         <div>
-           <img src="./assets/tutorial/step4.jpg" alt="Control Block" class="step-image" style="background:#f0e8e0; min-height: 200px;"/>
+           <img src="./images/img004.jpeg" alt="Control Block" class="step-image preview-img" style="background:#f0e8e0; min-height: 200px;"/>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">5</span> ထပ်ခါထပ်ခါ လုပ်ခိုင်းမယ် (Loops)</h3>
+          <p>လုပ်ဆောင်ချက်တွေကို တစ်ခါတည်းနဲ့ မရပ်ဘဲ ဆက်တိုက်အလုပ်လုပ်စေချင်ရင် Control category ထဲက "Forever" လိုမျိုး Looping block တွေ အသုံးပြုပေးရပါတယ်။ </p>
+          <ul class="block-list">
+            <li><i class="block-color color-orange"></i> forever</li>
+            <li><i class="block-color color-orange"></i> wait (0.1) seconds</li>
+          </ul>
+        </div>
+        <div>
+           <img src="./images/img005.png" alt="Control Block" class="step-image preview-img" style="background:#f0e8e0; min-height: 200px;"/>
         </div>
       </div>
 
@@ -359,7 +436,45 @@
     </div>
   </div>
 </footer>
-
 </div>
+
+<!-- IMAGE PREVIEW MODAL -->
+<div id="imagePreviewModal" class="img-modal">
+  <span class="img-modal-close">&times;</span>
+  <img class="img-modal-content" id="expandedImg">
+</div>
+
+<!-- SCRIPT FOR MODAL FUNCTIONALITY -->
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById("imagePreviewModal");
+    const modalImg = document.getElementById("expandedImg");
+    const closeBtn = document.querySelector(".img-modal-close");
+    
+    // Select all images we want to make previewable 
+    const images = document.querySelectorAll(".preview-img");
+
+    // Add click event to open modal
+    images.forEach(img => {
+      img.addEventListener("click", function() {
+        modal.style.display = "block";
+        modalImg.src = this.src; // Set the modal image source to the clicked image's source
+      });
+    });
+
+    // Close the modal when clicking the 'x'
+    closeBtn.addEventListener("click", function() {
+      modal.style.display = "none";
+    });
+
+    // Close the modal when clicking anywhere outside the image
+    modal.addEventListener("click", function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
