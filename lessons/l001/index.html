@@ -16,7 +16,7 @@
 
   @font-face {
     font-family: 'WaloneThin';
-    src: url('Z06-Walone_Thin.ttf') format('truetype');
+    src: url('../../assets/fonts/Z06-Walone_Thin.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -124,7 +124,9 @@
   .btn:hover { transform: translateY(-2px); }
   .btn-primary { background: var(--brand-gold); color: var(--brand-navy-dark); box-shadow: 0 9px 22px rgba(180,157,107,.22); }
   .btn-primary:hover { background: var(--brand-gold-light); box-shadow: 0 12px 28px rgba(180,157,107,.30); }
-  
+  .btn-ghost { background: rgba(255,255,255,.84); border: 1px solid #DDD9CF; color: var(--brand-navy); }
+  .btn-ghost:hover { background: #fff; border-color: rgba(10,30,109,.30); }
+
   .hero-img-wrap { position: relative; }
   .hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); border: 7px solid #fff; display: block; }
 
@@ -137,7 +139,7 @@
     display: flex;
     flex-direction: column;
     gap: 40px;
-    margin-top: 50px;
+    margin-top: 40px;
   }
   
   .step-card {
@@ -181,11 +183,102 @@
   .color-purple { background: #9966FF; }
   .color-orange { background: #FFAB19; }
 
+  /* STEP MEDIA & TOGGLE STYLES */
+  .step-media {
+    width: 100%;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--surface-2);
+    border: 2px dashed var(--border);
+    border-radius: var(--radius-md);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+
+  .step-media.has-image {
+    padding: 0;
+    border: 3px solid var(--surface-2);
+    background: transparent;
+  }
+
+  .show-img-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    color: var(--brand-navy);
+    border: 1px solid var(--border);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+  }
+
+  .show-img-btn:hover {
+    background: var(--brand-gold-soft);
+    border-color: var(--brand-gold);
+    color: var(--brand-navy-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .step-img-container {
+    display: none;
+    width: 100%;
+    position: relative;
+  }
+
+  .step-img-container.active {
+    display: block;
+    animation: fadeIn 0.35s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .step-image {
     width: 100%;
     border-radius: var(--radius-md);
-    border: 3px solid var(--surface-2);
     box-shadow: var(--shadow-sm);
+    display: block;
+  }
+
+  .hide-img-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(10, 30, 109, 0.85);
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    backdrop-filter: blur(4px);
+    transition: background 0.2s ease;
+    z-index: 5;
+  }
+
+  .hide-img-btn:hover {
+    background: var(--brand-navy-dark);
+  }
+
+  .global-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 25px;
   }
 
   /* IMAGE CLICK & HOVER EFFECTS */
@@ -300,15 +393,14 @@
   <div class="container hero-grid">
     <div>
       <span class="eyebrow"><i class="eyebrow-dot"></i> Scratch Level-1 Tutorial</span>
-      <h1>Sprite လေးကို<br><span>အသက်သွင်းကြမယ်!</span></h1>
+      <h1>Sprite <br><span>movement</span></h1>
       <p class="lead">Scratch ရဲ့ <strong>Move, Looks နဲ့ Control Blocks</strong> တွေကို အသုံးပြုပြီး ပထမဆုံး Animation လေးကို အတူတူ ဖန်တီးကြည့်ရအောင်။ 🌟</p>
       <div class="actions">
         <a class="btn btn-primary" href="#tutorial">Start Tutorial ↓</a>
       </div>
     </div>
     <div class="hero-img-wrap">
-      <!-- Placeholder for a lively Scratch animation GIF or image -->
-      <img class="hero-img preview-img" src="./assets/courses/scratch-hero.jpeg" alt="Scratch Interface Preview" style="background: #E8F0FE;"/>
+      <img class="hero-img preview-img" src="./images/sprite-costumes.jpeg" alt="Scratch Interface Preview" style="background: #E8F0FE;"/>
     </div>
   </div>
 </section>
@@ -317,11 +409,16 @@
 <section id="tutorial" class="section">
   <div class="container">
     <div class="section-head" style="text-align: center; display: block;">
-      <div class="kicker">Step-by-step Guide</div>
-      <h2>How to Animate a Sprite</h2>
+      <div class="kicker">🎮 Fun Scratch Mini-Course</div>
+      <h2>How to Animate Your First Sprite!</h2>
       <p class="section-copy" style="margin: 15px auto; max-width: 600px;">
-        Coding အတွေ့အကြုံ လုံးဝမရှိသေးတဲ့ သားသားမီးမီးတို့အတွက် Blocks လေးတွေကို Puzzle ဆက်သလို ဆက်ပြီး ဇာတ်ကောင် (Sprite) လေးတွေကို အလိုအလျောက် လှုပ်ရှားစေမယ့် နည်းလမ်းဖြစ်ပါတယ်။
+        Coding အတွေ့အကြုံ လုံးဝမရှိသေးတဲ့ သားသားမီးမီးတို့အတွက် Legos/Puzzle တွဲဆော့သလိုမျိုး colorful block လေးတွေဆက်ပြီး မိမိနှစ်သက်တဲ့ Sprite ဇာတ်ကောင်လေးတွေကို သက်ဝင်လှုပ်ရှားအောင် ဖန်တီးလိုက်ကြရအောင်!
       </p>
+      <!-- GLOBAL SHOW / HIDE ALL BUTTONS -->
+      <div class="global-controls">
+        <button id="showAllBtn" class="btn btn-ghost" style="font-size: 13px;">👁️ Show All Images / ပုံအားလုံးကြည့်မည်</button>
+        <button id="hideAllBtn" class="btn btn-ghost" style="font-size: 13px; display: none;">🙈 Hide All Images / ပုံအားလုံးဖွက်မည်</button>
+      </div>
     </div>
 
     <div class="tutorial-steps">
@@ -329,76 +426,155 @@
       <!-- Step 1 -->
       <div class="step-card">
         <div class="step-content">
-          <h3><span class="step-number">1</span> ပွဲစဖို့ ပြင်ဆင်မယ် (Events)</h3>
+          <h3><span class="step-number">1</span> Sprite Move Forward and Talking</h3>
           <p>Animation တစ်ခုစတင်ဖို့အတွက် အစပြုမယ့် ခလုတ်တစ်ခု လိုအပ်ပါတယ်။ Scratch မှာ အစိမ်းရောင်အလံ (Green Flag) လေးကိုနှိပ်တာနဲ့ စတင်အလုပ်လုပ်ဖို့ Event Block ကို အရင်ဆွဲထည့်ပါမယ်။</p>
+          
           <ul class="block-list">
-            <li><i class="block-color color-yellow"></i> When [Green Flag] clicked</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [Green Flag] clicked</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> move 10 steps</li>
+            <li><i class="block-color color-purple"></i> <strong>Looks:</strong> say "Hey, ready?" for 2 seconds</li>
+            <li><i class="block-color color-purple"></i> <strong>Looks:</strong> say "Let's go!"</li>
           </ul>
         </div>
-        <div>
-           <!-- Placeholder for Step 1 image -->
-           <img src="./images/img001.png" alt="Event Block" class="step-image preview-img" style="background:#f0f0f0; min-height: 200px;"/>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/img001.png" alt="Event Block" class="step-image preview-img"/>
+          </div>
         </div>
       </div>
-
       <!-- Step 2 -->
       <div class="step-card">
         <div class="step-content">
-          <h3><span class="step-number">2</span> လှုပ်ရှားမှု ထည့်မယ် (Motion)</h3>
-          <p>Sprite လေးကို ရှေ့ကိုရွေ့စေချင်ရင် Motion category ထဲက "Move" block ကို သုံးပါမယ်။ လှမ်းမယ့် ခြေလှမ်းအရေအတွက် (Steps) ကို ကိုယ်တိုင် ပြင်လို့ရပါတယ်။</p>
+          <h3><span class="step-number">2</span> Explain Costumes (ဝတ်စုံပုံစံများ)</h3>
+          <p>ခြေလှမ်းလှမ်းသလို သဘာဝကျကျဖြစ်ဖို့ Sprite ရဲ့ ပုံစံ (Costume) ကို ပြောင်းပေးရပါမယ်။ ဒါမှသာ လမ်းလျှောက်နေတဲ့ Animation အစစ်နဲ့ တူလာမှာပါ။</p>
+          
           <ul class="block-list">
-            <li><i class="block-color color-blue"></i> move (10) steps</li>
+            <li><i class="block-color color-blue"></i> <strong>Costumes Tab:</strong> Go to Costumes tab (ဘယ်ဘက်အပေါ်ဒေါောင့်)</li>
+            <li><i class="block-color color-purple"></i> <strong>Costume 1 & 2:</strong> Compare walking poses (ခြေလှမ်းပုံစံ နှစ်မျိုးကို နှိုင်းယှဉ်ပြပါ)</li>
           </ul>
         </div>
-        <div>
-           <img src="./images/img002.png" alt="Motion Block" class="step-image preview-img" style="background:#e0e8f0; min-height: 200px;"/>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/img002.png" alt="Costumes Tab" class="step-image preview-img"/>
+          </div>
         </div>
       </div>
 
       <!-- Step 3 -->
       <div class="step-card">
         <div class="step-content">
-          <h3><span class="step-number">3</span> ရုပ်ထွက်ပြောင်းမယ် (Looks)</h3>
-          <p>ခြေလှမ်းလှမ်းသလို သဘာဝကျကျဖြစ်ဖို့ Sprite ရဲ့ ပုံစံ (Costume) ကို ပြောင်းပေးရပါမယ်။ ဒါမှသာ လမ်းလျှောက်နေတဲ့ Animation အစစ်နဲ့ တူလာမှာပါ။</p>
+          <h3><span class="step-number">3</span> Sprite Walking and Speaking</h3>
+          <p>Sprite လေးကို လမ်းလျှောက်ရင်း စကားပြောအောင် Motion၊ Looks နဲ့ Costume block တွဲသုံးပါမယ်။</p>
+          
           <ul class="block-list">
-            <li><i class="block-color color-purple"></i> next costume</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [Green Flag] clicked</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> move 10 steps</li>
+            <li><i class="block-color color-purple"></i> <strong>Looks:</strong> next costume</li>
+            <li><i class="block-color color-purple"></i> <strong>Looks:</strong> say "I'm running" for 2 seconds</li>
           </ul>
         </div>
-        <div>
-           <img src="./images/img003.png" alt="Looks Block" class="step-image preview-img" style="background:#e8e0f0; min-height: 200px;"/>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/img003.png" alt="Walking Script" class="step-image preview-img"/>
+          </div>
         </div>
       </div>
 
       <!-- Step 4 -->
       <div class="step-card">
         <div class="step-content">
-          <h3><span class="step-number">4</span> ထပ်ခါထပ်ခါ လုပ်ခိုင်းမယ် (Loops)</h3>
-          <p>လုပ်ဆောင်ချက်တွေကို တစ်ခါတည်းနဲ့ မရပ်ဘဲ ဆက်တိုက်အလုပ်လုပ်စေချင်ရင် Control category ထဲက "Forever" လိုမျိုး Looping block တွေ အသုံးပြုပေးရပါတယ်။ </p>
+          <h3><span class="step-number">4</span> Explain X and Y Coordinates (တည်နေရာသတ်မှတ်ခြင်း)</h3>
+          <p>Scratch Stage ပေါ်မှာ Sprite ဘယ်နေရာမှာရှိလဲဆိုတာကို X (ဘယ်/ညာ) နဲ့ Y (အပေါ်/အောက်) တန်ဖိုးတွေနဲ့ သတ်မှတ်ပါတယ်။</p>
+          
           <ul class="block-list">
-            <li><i class="block-color color-orange"></i> forever</li>
-            <li><i class="block-color color-orange"></i> wait (0.1) seconds</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> go to x: (0) y: (0) (Center point)</li>
+            <li><i class="block-color color-blue"></i> <strong>X-axis:</strong> Left (-) to Right (+)</li>
+            <li><i class="block-color color-blue"></i> <strong>Y-axis:</strong> Down (-) to Up (+)</li>
           </ul>
         </div>
-        <div>
-           <img src="./images/img004.jpeg" alt="Control Block" class="step-image preview-img" style="background:#f0e8e0; min-height: 200px;"/>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/image-x-y.png" alt="X Y Coordinates Grid" class="step-image preview-img"/>
+          </div>
         </div>
       </div>
 
-      <!-- Step 4 -->
+
+      <!-- Step 5 -->
       <div class="step-card">
         <div class="step-content">
-          <h3><span class="step-number">5</span> ထပ်ခါထပ်ခါ လုပ်ခိုင်းမယ် (Loops)</h3>
-          <p>လုပ်ဆောင်ချက်တွေကို တစ်ခါတည်းနဲ့ မရပ်ဘဲ ဆက်တိုက်အလုပ်လုပ်စေချင်ရင် Control category ထဲက "Forever" လိုမျိုး Looping block တွေ အသုံးပြုပေးရပါတယ်။ </p>
+          <h3><span class="step-number">5</span> Moving Sprite with Keyboard (Keyboard ဖြင့် Sprite ကို ရွှေ့ခြင်း)</h3>
+          <p>Keyboard ပေါ်က Arrow keys (မျှားခလုတ်များ) ကို အသုံးပြုပြီး Sprite လေးကို ဘယ်၊ ညာ၊ အပေါ်၊ အောက် စိတ်ကြိုက် ရွှေ့လျားအောင် Event block များနှင့် Motion block များကို တွဲဖက် အသုံးပြုပါမယ်။</p>
+          
           <ul class="block-list">
-            <li><i class="block-color color-orange"></i> forever</li>
-            <li><i class="block-color color-orange"></i> wait (0.1) seconds</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [right arrow key] pressed</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change x by (10) (ညာဘက်သို့ သွားရန်)</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [left arrow key] pressed</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change x by (-10) (ဘယ်ဘက်သို့ သွားရန်)</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [up arrow key] pressed</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change y by (10) (အပေါ်သို့ သွားရန်)</li>
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [down arrow key] pressed</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change y by (-10) (အောက်သို့ သွားရန်)</li>
           </ul>
         </div>
-        <div>
-           <img src="./images/img005.png" alt="Control Block" class="step-image preview-img" style="background:#f0e8e0; min-height: 200px;"/>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/img004.png" alt="Moving Sprite with Keyboard Arrow Keys" class="step-image preview-img"/>
+          </div>
         </div>
       </div>
 
+
+      <!-- Step 5 -->
+      <div class="step-card">
+        <div class="step-content">
+          <h3><span class="step-number">5</span> Jumping Sprite When Up Arrow Key Pressed (ခုန်ကျော်ခြင်း)</h3>
+          <p>Keyboard ပေါ်က Up Arrow ခလုတ်ကို နှိပ်လိုက်တဲ့အခါ Sprite လေးက အပေါ်ကို ခုန်တက်ပြီး အောက်ကို ပြန်ဆင်းလာအောင် Y-axis တန်ဖိုးကို ပြောင်းလဲပေးရပါမယ်။</p>
+          
+          <ul class="block-list">
+            <li><i class="block-color color-yellow"></i> <strong>Events:</strong> When [up arrow] key pressed</li>
+            <li><i class="block-color color-orange"></i> <strong>Control:</strong> repeat (10)</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change y by (10)</li>
+            <li><i class="block-color color-orange"></i> <strong>Control:</strong> repeat (10)</li>
+            <li><i class="block-color color-blue"></i> <strong>Motion:</strong> change y by (-10)</li>
+          </ul>
+        </div>
+        <div class="step-media">
+          <button class="show-img-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            Show Screenshot / ပုံကြည့်ရန်
+          </button>
+          <div class="step-img-container">
+            <button class="hide-img-btn" title="Hide image">✕ Hide</button>
+            <img src="./images/img005.png" alt="Jump Script using Y-axis" class="step-image preview-img"/>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -444,35 +620,103 @@
   <img class="img-modal-content" id="expandedImg">
 </div>
 
-<!-- SCRIPT FOR MODAL FUNCTIONALITY -->
+<!-- SCRIPT FOR MODAL & STEP IMAGE TOGGLE FUNCTIONALITY -->
 <script>
   document.addEventListener("DOMContentLoaded", function() {
+    // ----------------------------------------------------
+    // 1. FULL-SCREEN IMAGE MODAL FUNCTIONALITY
+    // ----------------------------------------------------
     const modal = document.getElementById("imagePreviewModal");
     const modalImg = document.getElementById("expandedImg");
     const closeBtn = document.querySelector(".img-modal-close");
-    
-    // Select all images we want to make previewable 
-    const images = document.querySelectorAll(".preview-img");
 
-    // Add click event to open modal
-    images.forEach(img => {
-      img.addEventListener("click", function() {
+    // Event delegation so dynamically shown images open modal when clicked
+    document.addEventListener("click", function(e) {
+      if (e.target && e.target.classList.contains("preview-img")) {
         modal.style.display = "block";
-        modalImg.src = this.src; // Set the modal image source to the clicked image's source
-      });
+        modalImg.src = e.target.src;
+      }
     });
 
-    // Close the modal when clicking the 'x'
     closeBtn.addEventListener("click", function() {
       modal.style.display = "none";
     });
 
-    // Close the modal when clicking anywhere outside the image
     modal.addEventListener("click", function(event) {
       if (event.target === modal) {
         modal.style.display = "none";
       }
     });
+
+    // ----------------------------------------------------
+    // 2. STEP IMAGE SHOW / HIDE FUNCTIONALITY
+    // ----------------------------------------------------
+    const stepMedias = document.querySelectorAll(".step-media");
+    const showAllBtn = document.getElementById("showAllBtn");
+    const hideAllBtn = document.getElementById("hideAllBtn");
+
+    function showStepImage(mediaEl) {
+      const showBtn = mediaEl.querySelector(".show-img-btn");
+      const imgContainer = mediaEl.querySelector(".step-img-container");
+      if (showBtn && imgContainer) {
+        showBtn.style.display = "none";
+        imgContainer.classList.add("active");
+        mediaEl.classList.add("has-image");
+      }
+      updateGlobalButtonsState();
+    }
+
+    function hideStepImage(mediaEl) {
+      const showBtn = mediaEl.querySelector(".show-img-btn");
+      const imgContainer = mediaEl.querySelector(".step-img-container");
+      if (showBtn && imgContainer) {
+        showBtn.style.display = "inline-flex";
+        imgContainer.classList.remove("active");
+        mediaEl.classList.remove("has-image");
+      }
+      updateGlobalButtonsState();
+    }
+
+    stepMedias.forEach(mediaEl => {
+      const showBtn = mediaEl.querySelector(".show-img-btn");
+      const hideBtn = mediaEl.querySelector(".hide-img-btn");
+
+      if (showBtn) {
+        showBtn.addEventListener("click", () => showStepImage(mediaEl));
+      }
+      if (hideBtn) {
+        hideBtn.addEventListener("click", () => hideStepImage(mediaEl));
+      }
+    });
+
+    // Global "Show All" and "Hide All" Controls
+    if (showAllBtn && hideAllBtn) {
+      showAllBtn.addEventListener("click", () => {
+        stepMedias.forEach(mediaEl => showStepImage(mediaEl));
+      });
+
+      hideAllBtn.addEventListener("click", () => {
+        stepMedias.forEach(mediaEl => hideStepImage(mediaEl));
+      });
+    }
+
+    function updateGlobalButtonsState() {
+      let activeCount = 0;
+      stepMedias.forEach(mediaEl => {
+        const imgContainer = mediaEl.querySelector(".step-img-container");
+        if (imgContainer && imgContainer.classList.contains("active")) {
+          activeCount++;
+        }
+      });
+
+      if (activeCount === stepMedias.length) {
+        showAllBtn.style.display = "none";
+        hideAllBtn.style.display = "inline-flex";
+      } else {
+        showAllBtn.style.display = "inline-flex";
+        hideAllBtn.style.display = "none";
+      }
+    }
   });
 </script>
 
